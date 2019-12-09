@@ -244,7 +244,7 @@ if ( ! function_exists( 'feather_magazine_comments' ) ) {
 /*
  * Excerpt
  */
-//
+
 function feather_magazine_excerpt($limit) {
 	$excerpt = explode(' ', get_the_excerpt(), $limit);
   if (count($excerpt)>=$limit) {
