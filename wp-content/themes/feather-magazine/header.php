@@ -84,8 +84,9 @@
 							<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'menu clearfix', 'container' => '' ) ); ?>
 						<?php } else { ?>
 							<ul class="menu clearfix">
+								<li><a href="/stupidest/">STUPIDEST!</a></li>
 								<?php wp_list_categories('title_li='); ?>
-								<li><a href="https://www.stupidamerica.net/about-us/">About us</a></li>
+								<li><a href="/about-us/">About us</a></li>
 							</ul>
 						<?php } ?>
 					</nav><!-- #site-navigation -->
