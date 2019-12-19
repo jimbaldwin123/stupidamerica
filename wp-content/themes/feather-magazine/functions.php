@@ -402,7 +402,7 @@ function feather_magazine_fonts_url() {
   }
 
   function feather_magazine_scripts_styles() {
-    wp_enqueue_style( 'feather-magazine-fonts', feather_magazine_fonts_url(), array(), null );
+    wp_enqueue_style( 'feather-magazine-fonts', feather_magazine_fonts_url(), array(), null);
   }
   add_action( 'wp_enqueue_scripts', 'feather_magazine_scripts_styles' );
 

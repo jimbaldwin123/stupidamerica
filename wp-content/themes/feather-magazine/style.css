@@ -742,9 +742,12 @@ a#pull {
     background: transparent
 }
 /*-[ Content ]--------------------*/
-
+.stupefied{
+	width:20%;
+	float:left;
+}
 .article {
-    width: 68.58%;
+    width: 48.58%;
     max-width: 720px;
     float: left;
     margin-bottom: 30px;
