@@ -7,7 +7,7 @@
 ?>
 <?php get_header(); ?>
 	<div id="page" class="home-page">
-		<div class="stupefied">
+		<div class="stupefied" style="margin-right:10px;">
 <?php get_header(); ?>
         <?php
 $the_slug = 'stupefied';
@@ -20,11 +20,11 @@ $args = array(
 $my_posts = get_posts($args);
 // print_r($my_posts[0]->post_content);
 ?>
-                                                <div class="single_page single_post clear">
+                                                <div class="single_page single_post clear" style="border-right: 1px solid #aaa;">
                                                         <header>
                                                                 <h1>Stupefied!</h1>
                                                         </header>
-                                                        <div id="content" class="post-single-content box mark-links">
+                                                        <div id="content" class="post-single-content box mark-links" style="overflow: scroll;height:1000px;padding-right:2px;">
 								<?php print $my_posts[0]->post_content; ?>
 							</div><!--.post-content box mark-links-->
                                                 </div>

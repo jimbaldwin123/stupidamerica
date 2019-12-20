@@ -747,7 +747,7 @@ a#pull {
 	float:left;
 }
 .article {
-    width: 48.58%;
+    width: 56.58%;
     max-width: 720px;
     float: left;
     margin-bottom: 30px;
@@ -1380,7 +1380,7 @@ nav #searchform fieldset {
 }
 .sidebar.c-4-12 {
     float: right;
-    width: 28.58%;
+    width: 20.58%;
     max-width: 300px;
     line-height: 150%
 }
