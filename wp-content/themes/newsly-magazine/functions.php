@@ -190,9 +190,7 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
 										</h2>
 										<div class="post-content">
 											<?php echo esc_html(feather_magazine_excerpt(56)); ?><?php echo esc_html_e('...','newsly-magazine'); ?>
-											<?php if (!is_home() ): ?>
 											<?php feather_magazine_readmore(); ?>
-											<?php endif; ?>
 										</div>
 									<?php else : ?>
 										<?php if (feather_magazine_post_has_moretag() || ! is_home() ) : ?>
