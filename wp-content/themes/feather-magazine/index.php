@@ -24,7 +24,7 @@ $my_posts = get_posts($args);
                                                         <header>
                                                                 <h1>Stupefied!</h1>
                                                         </header>
-                                                        <div id="content" class="post-single-content box mark-links" style="overflow: scroll;height:1000px;padding-right:2px;">
+                                                        <div id="content" class="post-single-content box mark-links stupefied-content">
 								<?php print $my_posts[0]->post_content; ?>
 							</div><!--.post-content box mark-links-->
                                                 </div>

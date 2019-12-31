@@ -746,6 +746,11 @@ a#pull {
 	width:20%;
 	float:left;
 }
+.stupefied-content {
+    overflow: scroll;
+    height:1000px;
+    padding-right:2px;
+}
 .article {
     width: 56.58%;
     max-width: 720px;
@@ -2729,6 +2734,15 @@ p.comment-form-email,p.comment-form-author {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+    }
+    .stupefied {
+       width:100%;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    .stupefied-content {
+       overflow:visibile;
+       height: 100%;
     }
     .sidebar.c-4-12 {
         width: 100%;
