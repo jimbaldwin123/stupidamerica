@@ -45,7 +45,7 @@ get_header(); ?>
 					<?php if($feather_magazine_relatedposts_section == '1') { ?>	
 					<!-- Start Related Posts -->
 					<?php $categories = get_the_category($post->ID); 
-					if ($categories) { $category_ids = array(); 
+						if ($categories && false /* turn off related posts block */ ) { $category_ids = array(); 
 						foreach($categories as $individual_category) 
 							$category_ids[] = $individual_category->term_id; 
 						$args=array( 'category__in' => $category_ids, 
