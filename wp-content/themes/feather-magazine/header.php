@@ -87,7 +87,7 @@
 								<!-- <li><a href="/stupefied/">STUPEFIED!</a></li> -->
 								<?php wp_list_categories('title_li='); ?>
 								<li><a href="/about-us/">About us</a></li>
-								<li><a href="/contact-kenneth-volgarus/">Contact us</a></li>
+								<li><a href="/contact-stupid-america/">Contact us</a></li>
 							</ul>
 						<?php } ?>
 					</nav><!-- #site-navigation -->
