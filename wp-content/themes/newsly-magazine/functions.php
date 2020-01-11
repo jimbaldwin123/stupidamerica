@@ -203,3 +203,26 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
 						<?php }
 					}
 
+/**
+notify of stupidest page update
+**/
+function sa_notify_save_post($id,$post) {
+        if(wp_is_post_autosave($id) || $id != 90){
+                return;
+        }
+        $fp = fopen('/home/jbaldwin/wptest.txt','w');
+        $content = print_r($post,true);
+        fwrite($fp, $id . ' ' . $content);
+        fclose($fp);
+$to      = 'jim@jimbaldwin.net';
+$subject = 'the subject '. $id;
+$message = substr(strip_tags($post->post_content),0,100).'...'.'<a href="https://www.stupidamerca.net">Read more...</a>';
+$headers = 'From: contact@stupidamerica.net' . "\r\n" .
+    'Reply-To: contact@stupidamerica.net' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+}
+
+add_action('save_post', 'sa_notify_save_post', 10, 2);
+		
