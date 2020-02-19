@@ -225,6 +225,8 @@ function sa_notify_save_post($id,$post) {
     $headers = 'From: contact@stupidamerica.net' . "\r\n" .
         'Reply-To: contact@stupidamerica.net' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     mail($to, $subject, $message, $headers);
 }
 
