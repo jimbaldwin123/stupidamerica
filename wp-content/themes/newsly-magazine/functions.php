@@ -221,7 +221,7 @@ function sa_notify_save_post($id,$post) {
     $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";
     $handle = fopen($filename, "r");
     $template = fread($handle, filesize($filename));
-    $message = nl2br(str_replace('{{ %content% }}',$content,$template));
+    $message = str_replace('{{ %content% }}',$content,$template);
     $headers = 'From: contact@stupidamerica.net' . "\r\n" .
         'Reply-To: contact@stupidamerica.net' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
