@@ -217,7 +217,7 @@ function sa_notify_save_post($id,$post) {
     $to      = 'jim@jimbaldwin.net';
     $subject = 'Another update from StupidAmerica.com';
     // $message = substr(strip_tags($post->post_content),0,100).'...'.'<a href="https://www.stupidamerca.net">Read more...</a>';
-    $content = nl2br(substr(strip_tags($post->post_content),0,100));
+    $content = substr($post->post_content,0,100);
     $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";
     $handle = fopen($filename, "r");
     $template = fread($handle, filesize($filename));
