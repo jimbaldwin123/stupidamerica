@@ -203,3 +203,32 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
 						<?php }
 					}
 
+/**
+notify of stupidest page update
+**/
+function sa_notify_save_post($id,$post) {
+    $fp = fopen('/home/jbaldwin/wptest.txt','a');
+    $content = print_r($post,true);
+    fwrite($fp, $id . ' ' . $content);
+    fclose($fp);
+    if(wp_is_post_autosave($id) || $id != 90){
+        return;
+    }
+    $to      = 'jim@jimbaldwin.net';
+    $subject = 'Another update from StupidAmerica.com';
+    // $message = substr(strip_tags($post->post_content),0,100).'...'.'<a href="https://www.stupidamerca.net">Read more...</a>';
+    $content = substr(strip_tags($post->post_content),0,250) . '...';
+    $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";
+    $handle = fopen($filename, "r");
+    $template = fread($handle, filesize($filename));
+    $message = str_replace('{{ %content% }}',$content,$template);
+    $headers = 'From: contact@stupidamerica.net' . "\r\n" .
+        'Reply-To: contact@stupidamerica.net' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    mail($to, $subject, $message, $headers);
+}
+
+add_action('save_post', 'sa_notify_save_post', 10, 2);
+		
