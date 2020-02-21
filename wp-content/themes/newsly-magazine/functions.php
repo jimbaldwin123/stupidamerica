@@ -230,5 +230,10 @@ function sa_notify_save_post($id,$post) {
     mail($to, $subject, $message, $headers);
 }
 
+function sa_notify_save_post_cron(){
+	$id = 90;
+	$post = get_post(90);
+	sa_notify_save_post($id,$post);
+}
 add_action('save_post', 'sa_notify_save_post', 10, 2);
 		
