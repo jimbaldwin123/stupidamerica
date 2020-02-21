@@ -217,7 +217,19 @@ function sa_notify_save_post($id,$post) {
     $to      = 'jim@jimbaldwin.net';
     $subject = 'Another update from StupidAmerica.com';
     // $message = substr(strip_tags($post->post_content),0,100).'...'.'<a href="https://www.stupidamerca.net">Read more...</a>';
+
+    // get content summary
     $content = substr(strip_tags($post->post_content),0,250) . '...';
+
+    $fpcontent = fopen('/home/jbaldwin/wpcontentref.txt','r');
+    $oldcontent = fread($fpcontent,1250);
+    fclose($fpcontent);
+    if($oldcontent == $content){
+	return;
+    }
+    $fpcontent = fopen('/home/jbaldwin/wpcontentref.txt','w');
+    fwrite($fpcontent,$content);    
+
     $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";
     $handle = fopen($filename, "r");
     $template = fread($handle, filesize($filename));
