@@ -109,6 +109,7 @@ Thumbs.db
 !wp-content/plugins/example-plugin/
 !wp-content/themes/feather-magazine/
 !wp-content/themes/newsly-magazine/
+!wp-content/themes/newsly-magazine/*
 !wp-content/plugins/my-wp-cron-test/
 !wp-content/plugins/my-wp-cron-test/*
 
