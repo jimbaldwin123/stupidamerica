@@ -250,5 +250,5 @@ function sa_notify_save_post_cron(){
 	$post = get_post(90);
 	sa_notify_save_post($id,$post);
 }
-add_action('save_post', 'sa_notify_save_post', 10, 2);
+// add_action('save_post', 'sa_notify_save_post', 10, 2);
 		
