@@ -44,9 +44,9 @@ function sa_notify_save_post_cron(){
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     $sql = "
         select * from wp_5n6yir_posts
-        where post_parent = $id
+        where post_parent = 90
         and notified = 0
-        order_by post_date desc
+        order by post_date desc
         limit 1
     ";
     $result = $conn->query($sql);
