@@ -59,7 +59,7 @@ function sa_notify_save_post_cron(){
     foreach($ids as $id){
         $sql = "
         select * from wp_5n6yir_posts
-        where post_parent = 90
+        where post_parent = $id
         and notified = 0
         order by post_date desc
         limit 1
