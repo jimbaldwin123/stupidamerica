@@ -1,4 +1,5 @@
 <?php
+define('DB_NAME', 'indentureland_com');
 /** MySQL database username */
 define('DB_USER', 'indenturelandcom');
 
