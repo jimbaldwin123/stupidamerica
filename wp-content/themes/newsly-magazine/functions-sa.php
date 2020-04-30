@@ -1,6 +1,18 @@
-<?php 
-include('/home/jbaldwin/stupidamerica.net/public/wp-config.php');
+<?php
+/** MySQL database username */
+define('DB_USER', 'indenturelandcom');
 
+/** MySQL database password */
+define('DB_PASSWORD', 'vfr45tgb');
+
+/** MySQL hostname */
+define('DB_HOST', 'mysql.jimbaldwin.net');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
 /**
 notify of stupidest page update
 **/
@@ -48,5 +60,5 @@ function sa_notify_save_post_cron(){
 }
 
 sa_notify_save_post_cron();
-?>
+
 
