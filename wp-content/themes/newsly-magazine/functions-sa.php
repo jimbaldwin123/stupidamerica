@@ -48,3 +48,5 @@ function sa_notify_save_post_cron(){
 }
 
 sa_notify_save_post_cron();
+?>
+
