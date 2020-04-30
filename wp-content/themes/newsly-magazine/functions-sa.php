@@ -50,6 +50,7 @@ function sa_notify_save_post_cron(){
         limit 1
     ";
     $result = $conn->query($sql);
+    print_r($result);
     if($post = $result->fetch_assoc()){
         sa_notify_save_post($post);
         $sql = "
