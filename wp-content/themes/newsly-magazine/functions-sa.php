@@ -17,13 +17,14 @@ define('DB_COLLATE', '');
 /**
 notify of stupidest page update
 **/
+
 function sa_notify_save_post($post) {
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     $fp = fopen('/home/jbaldwin/wptest.txt','a');
     $content = print_r($post['content'],true);
     fwrite($fp, $post['ID'] . ' ' . $content);
     fclose($fp);
 
-    $to      = 'jim@jimbaldwin.net';
     $subject = 'Another update from StupidAmerica.com';
     $content = substr(strip_tags($post['post_content']),0,250) . '...';
 
@@ -36,29 +37,45 @@ function sa_notify_save_post($post) {
         'X-Mailer: PHP/' . phpversion();
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    mail($to, $subject, $message, $headers);
+
+    $sql = "
+        select * from wp_5n6yir_mailpoet_subscribers
+        where status = 'subscribed'
+    ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while($subscriber = $result->fetch_assoc()) {
+            mail($subscriber['email'], $subject, $message, $headers);
+            print $subscriber['email'] . "\n";
+        }
+    } else {
+        echo "0 results";
+    }
 }
 
 function sa_notify_save_post_cron(){
-	$id = 90;
+	$ids = [90,584]; // stupefied and roundup
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-    $sql = "
+    foreach($ids as $id){
+        $sql = "
         select * from wp_5n6yir_posts
         where post_parent = 90
         and notified = 0
         order by post_date desc
         limit 1
     ";
-    $result = $conn->query($sql);
-    print_r($result);
-    if($post = $result->fetch_assoc()){
-        sa_notify_save_post($post);
-        $sql = "
+        $result = $conn->query($sql);
+
+        if($post = $result->fetch_assoc()){
+            sa_notify_save_post($post);
+            $sql = "
             update wp_5n6yir_posts
             set notified = 1
             where id = " . $post['ID'];
-        $conn->query($sql);
+            $conn->query($sql);
+        }
     }
+
 }
 
 sa_notify_save_post_cron();
