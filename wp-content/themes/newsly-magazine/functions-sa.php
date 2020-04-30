@@ -18,7 +18,7 @@ define('DB_COLLATE', '');
 notify of stupidest page update
 **/
 
-function sa_notify_save_post($post) {
+function sa_notify_save_post($post,$slug) {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     $fp = fopen('/home/jbaldwin/wptest.txt','a');
     $content = print_r($post['content'],true);
@@ -32,6 +32,7 @@ function sa_notify_save_post($post) {
     $handle = fopen($filename, "r");
     $template = fread($handle, filesize($filename));
     $message = str_replace('{{ %content% }}',$content,$template);
+    $message = str_replace('{{ %slug% }}',$slug,$message);
     $headers = 'From: contact@stupidamerica.net' . "\r\n" .
         'Reply-To: contact@stupidamerica.net' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
@@ -54,9 +55,13 @@ function sa_notify_save_post($post) {
 }
 
 function sa_notify_save_post_cron(){
-	$ids = [90,584]; // stupefied and roundup
+	$ids = [
+	    'stupefied' => 90,
+        '2020/04/27/your-ongoing-roundup-of-covid-related-stupidity/' => 584,
+    ]; // stupefied and roundup
+
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-    foreach($ids as $id){
+    foreach($ids as $slug => $id){
         $sql = "
         select * from wp_5n6yir_posts
         where post_parent = $id
@@ -67,7 +72,7 @@ function sa_notify_save_post_cron(){
         $result = $conn->query($sql);
 
         if($post = $result->fetch_assoc()){
-            sa_notify_save_post($post);
+            sa_notify_save_post($post,$slug);
             $sql = "
             update wp_5n6yir_posts
             set notified = 1
