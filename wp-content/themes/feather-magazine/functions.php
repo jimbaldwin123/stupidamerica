@@ -253,7 +253,7 @@ function feather_magazine_excerpt($limit) {
   } else {
     $excerpt = implode(" ",$excerpt);
   }
-  //$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
   return $excerpt;
 }
 
