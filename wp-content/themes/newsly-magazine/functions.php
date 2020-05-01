@@ -189,6 +189,7 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
 											<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
 										</h2>
 										<div class="post-content">
+                                            <?php echo the_post(); ?>
 											<?php echo esc_html(feather_magazine_excerpt(56)); ?><?php echo esc_html_e('...','newsly-magazine'); ?>
 											<?php feather_magazine_readmore(); ?>
 										</div>
