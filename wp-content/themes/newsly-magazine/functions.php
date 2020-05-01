@@ -189,9 +189,20 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
 											<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
 										</h2>
 										<div class="post-content">
-                                            <?php echo get_the_content(); ?>
-											<?php echo esc_html(feather_magazine_excerpt(56)); ?><?php echo esc_html_e('...','newsly-magazine'); ?>
-											<?php feather_magazine_readmore(); ?>
+                                            <?php
+                                            /**
+                                             * jim 2020-05-01
+                                             * if there is an image in the content, display it
+                                             *
+                                             */
+                                                $content = get_the_content();
+                                                if (strpos($content, '<img') !== false) {
+                                                    echo $content;
+                                                } else {
+                                                    echo esc_html(feather_magazine_excerpt(56)); ?><?php echo esc_html_e('...','newsly-magazine');
+                                                    feather_magazine_readmore();
+                                                }
+                                            ?>
 										</div>
 									<?php else : ?>
 										<?php if (feather_magazine_post_has_moretag() || ! is_home() ) : ?>
