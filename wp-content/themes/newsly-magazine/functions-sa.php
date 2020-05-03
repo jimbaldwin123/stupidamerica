@@ -76,7 +76,8 @@ function sa_notify_save_post_cron(){
             $sql = "
             update wp_5n6yir_posts
             set notified = 1
-            where id = " . $post['ID'];
+            where post_parent = $id
+            ";
             $conn->query($sql);
         }
     }
