@@ -192,11 +192,11 @@ if(! function_exists('newsly_magazine_customizer_output' ) ):
                                             <?php
                                             /**
                                              * jim 2020-05-01
-                                             * if there is an image in the content, display it
+                                             * if there is an image in the first 200 characters of the content, display it
                                              *
                                              */
                                                 $content = get_the_content();
-                                                if (strpos($content, '<img') !== false) {
+                                                if (strpos($content, '<img') !== false && strpos($content, '<img') < 200) {
                                                     echo $content;
                                                 } else {
                                                     echo esc_html(feather_magazine_excerpt(56)); ?><?php echo esc_html_e('...','newsly-magazine');
