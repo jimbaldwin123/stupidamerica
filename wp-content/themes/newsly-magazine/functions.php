@@ -279,3 +279,17 @@ function exclude_widget_categories($args){
 }
 add_filter("widget_categories_args","exclude_widget_categories");
 remove_filter('the_content', 'wptexturize');
+function remove_smart_quotes($content) {
+
+    $content= str_replace(
+        array("\xe2\x80\x98", "\xe2\x80\x99", "\xe2\x80\x9c", "\xe2\x80\x9d", "\xe2\x80\x93", "\xe2\x80\x94", "\xe2\x80\xa6"),
+        array("'", "'", '"', '"', '-', '--', '...'), $content);
+
+    $content= str_replace(
+        array(chr(145), chr(146), chr(147), chr(148), chr(150), chr(151), chr(133)),
+        array("'", "'", '"', '"', '-', '--', '...'), $content);
+
+    return $content;
+}
+
+add_filter( 'the_content', 'remove_smart_quotes');
