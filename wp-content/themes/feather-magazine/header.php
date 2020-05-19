@@ -85,7 +85,7 @@
 						<?php } else { ?>
 							<ul class="menu clearfix">
 								<!-- <li><a href="/stupefied/">STUPEFIED!</a></li> -->
-								<?php wp_list_categories('title_li='); ?>
+								<?php wp_list_categories(['title_li=','exclude=13']); ?>
 								<li><a href="/about-us/">About us</a></li>
 							</ul>
 						<?php } ?>

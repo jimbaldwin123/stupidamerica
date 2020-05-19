@@ -270,11 +270,3 @@ function exclude_pages_from_front($query) {
     }
 }
 add_action('pre_get_posts','exclude_pages_from_front');
-
-function exclude_widget_categories($args)
-{
-    $exclude = "13"; // The IDs of the excluding categories
-    $args["exclude"] = $exclude;
-    return $args;
-}
-add_filter("widget_categories_args","exclude_widget_categories");
