@@ -25,7 +25,7 @@ function sa_notify_save_post($post,$slug) {
     fwrite($fp, $post['ID'] . ' ' . $content);
     fclose($fp);
 
-    $subject = 'Another update from StupidAmerica.com';
+    $subject = 'A new post from Stupid America';
     $content = substr(strip_tags($post['post_content']),0,250) . '...';
 
     $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";

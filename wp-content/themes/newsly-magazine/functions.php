@@ -227,7 +227,7 @@ function sa_notify_save_post($id,$post) {
         return;
     }
     $to      = 'jim@jimbaldwin.net';
-    $subject = 'Another update from StupidAmerica.com';
+    $subject = 'A new post from Stupid America';
     // $message = substr(strip_tags($post->post_content),0,100).'...'.'<a href="https://www.stupidamerca.net">Read more...</a>';
 
     // test
