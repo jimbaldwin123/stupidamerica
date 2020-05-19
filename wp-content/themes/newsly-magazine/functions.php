@@ -291,5 +291,5 @@ function remove_smart_quotes($content) {
 
     return $content;
 }
-
+/** force pull */
 add_filter( 'the_content', 'remove_smart_quotes');
