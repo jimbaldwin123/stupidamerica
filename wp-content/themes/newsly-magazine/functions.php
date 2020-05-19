@@ -270,3 +270,11 @@ function exclude_pages_from_front($query) {
     }
 }
 add_action('pre_get_posts','exclude_pages_from_front');
+
+//Hide categories from WordPress category widget
+function exclude_widget_categories($args){
+    $exclude = "13";
+    $args["exclude"] = $exclude;
+    return $args;
+}
+add_filter("widget_categories_args","exclude_widget_categories");
