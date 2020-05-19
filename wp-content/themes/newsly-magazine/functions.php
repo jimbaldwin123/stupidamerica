@@ -263,4 +263,10 @@ function sa_notify_save_post_cron(){
 	sa_notify_save_post($id,$post);
 }
 // add_action('save_post', 'sa_notify_save_post', 10, 2);
-		
+
+function exclude_pages_from_front($query) {
+    if ( $query->is_home() && $query->is_main_query() ) {
+        $query->set( 'cat', '-13' );
+    }
+}
+add_action('pre_get_posts','exclude_pages_from_front');
