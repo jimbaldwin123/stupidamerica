@@ -86,6 +86,7 @@
 							<ul class="menu clearfix">
 								<!-- <li><a href="/stupefied/">STUPEFIED!</a></li> -->
 								<?php
+                                    $args = [];
                                     $args['title_li'] = '';
                                     $args['exclude'] = '13';
                                     wp_list_categories($args);
