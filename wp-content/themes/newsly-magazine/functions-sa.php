@@ -33,6 +33,7 @@ function sa_notify_save_post($post,$slug) {
     $template = fread($handle, filesize($filename));
     $message = str_replace('{{ %content% }}',$content,$template);
     $message = str_replace('{{ %slug% }}',$slug,$message);
+    $message = remove_smart_quotes($message);
     $headers = 'From: contact@stupidamerica.net' . "\r\n" .
         'Reply-To: contact@stupidamerica.net' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
