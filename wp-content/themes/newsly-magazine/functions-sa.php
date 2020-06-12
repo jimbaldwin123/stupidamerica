@@ -17,7 +17,7 @@ define('DB_COLLATE', '');
 /**
 notify of stupidest page update
 **/
-
+include('./wp-content/themes/newsly-magazine/functions.php');
 function sa_notify_save_post($post,$slug) {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     $content = substr(strip_tags($post['post_content']),0,250) . '...';
