@@ -20,14 +20,13 @@ notify of stupidest page update
 
 function sa_notify_save_post($post,$slug) {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    $content = substr(strip_tags($post['post_content']),0,250) . '...';
     if(DB_NAME == 'indentureland_com'){
         $fp = fopen('/home/jbaldwin/wptest.txt','a');
-        $content = print_r($post['post_content'],true);
         fwrite($fp, $post['ID'] . ' ' . $content);
         fclose($fp);
     }
     $subject = 'A new post from Stupid America';
-    $content = substr(strip_tags($post['post_content']),0,250) . '...';
 
     $filename = "/home/jbaldwin/test.stupidamerica.net/public/wp-content/themes/newsly-magazine/stupidest-email-template.html";
     $handle = fopen($filename, "r");
